@@ -1,17 +1,48 @@
-<br>
-<input type="text" placeholder="Search Friend" [(ngModel)]="query"  />
-<br>
-<b>Friends</b>
-<ng-container *ngFor="let user of friends | search: query; let i=index">
-  <div>
-    <p id="link-user" routerLink="/conversation/{{user.uid}}">
-      <img title="online" id="status_logo" *ngIf="user.status === 'online'" src="assets/img/logo_live_online.png" />
-      <img title="offline" id="status_logo" *ngIf="user.status === 'offline'" src="assets/img/logo_live_offline.png" />
-      <img title="away" id="status_logo" *ngIf="user.status === 'away'" src="assets/img/logo_live_away.png" />
-      <img title="busy" id="status_logo" *ngIf="user.status === 'busy'" src="assets/img/logo_live_busy.png" />
-      <img title="appear_offline" id="status_logo" *ngIf="user.status === 'appear_offline'" src="assets/img/logo_live_appear_offline.png" />
-      {{i}} {{user.nick}} - {{user.email}}
-    </p>
+<div id="homeContainer">
+  <div class="whiteBorderClassBox">
+    <div class="homeHeadContainer">
+      <div class="row">
+        <div class="col-md-auto">
+          <div class="avatarFrameOnline">
+            <img src="assets/img/generic_avatar.png" id="homeAvatarPic">
+          </div>
+        </div>
+        <div class="col">
+            <div >
+              <b>Veronica</b>
+              <div>
+                <span>Online</span>
+                <br/>
+                <span> Escribe un mensaje personal</span>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
   </div>
-</ng-container>
+  <div class="whiteContainerPadded mt-3">
+    <div class="row">
+      <div class="col">
+        <input class="form-control" type="text" placeholder="Search Friend" [(ngModel)]="query"  />
+      </div>
+      <div class="col-md-auto">
+        <img src="assets/img/logo_live_add.png" class="icon">
+      </div>
+    </div>
+    <hr>
+    <b>Friends {{friends.length}} / {{friends.length}}</b>
+      <div class="d-block mb-1" *ngFor="let user of friends | search: query; let i=index">
+          <span id="link-user" routerLink="/conversation/{{user.uid}}">
+              <img title="online" id="status_logo" *ngIf="user.status === 'online'" src="assets/img/logo_live_online.png" />
+              <img title="offline" id="status_logo" *ngIf="user.status === 'offline'" src="assets/img/logo_live_offline.png" />
+              <img title="away" id="status_logo" *ngIf="user.status === 'away'" src="assets/img/logo_live_away.png" />
+              <img title="busy" id="status_logo" *ngIf="user.status === 'busy'" src="assets/img/logo_live_busy.png" />
+              <img title="appear_offline" id="status_logo" *ngIf="user.status === 'appear_offline'" src="assets/img/logo_live_appear_offline.png" />
+              <b>{{user.nick}} </b>
+              <i class="text-primary"> {{user.subnick || (user.subnick) }} </i>
+              <small>{{user.email}}</small>
+          </span>
+        </div>
+  </div>
+</div>
 

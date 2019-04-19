@@ -3,6 +3,29 @@
 }
 
 #status_logo {
-  width: 15px;
+  width: 20px;
 }
 
+#homeContainer {
+  background-image:  url(/assets/img/msnbg.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.whiteBorderClassBox {
+  border: 1px solid rgba(255,255,255, .75);
+  padding: 4px;
+}
+
+.homeHeadContainer{
+  background-color:rgba(255,255,255, .50);
+}
+
+.whiteContainerPadded{
+  padding: 15px;
+  background-color: "#foffff";
+}
+
+img.icon {
+  width: 30px;
+}

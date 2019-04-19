@@ -1,3 +1,36 @@
 #main_logo {
   width: 50px;
 }
+
+#menuContainer {
+  background: rgba(183,222,237,1);
+  background: -moz-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 0%, rgba(113,206,239,1) 28%, rgba(183,222,237,1) 70%, rgba(183,222,237,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(183,222,237,1)), color-stop(0%, rgba(33,180,226,1)), color-stop(28%, rgba(113,206,239,1)), color-stop(70%, rgba(183,222,237,1)), color-stop(100%, rgba(183,222,237,1)));
+  background: -webkit-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 0%, rgba(113,206,239,1) 28%, rgba(183,222,237,1) 70%, rgba(183,222,237,1) 100%);
+  background: -o-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 0%, rgba(113,206,239,1) 28%, rgba(183,222,237,1) 70%, rgba(183,222,237,1) 100%);
+  background: -ms-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 0%, rgba(113,206,239,1) 28%, rgba(183,222,237,1) 70%, rgba(183,222,237,1) 100%);
+  background: linear-gradient(to bottom, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 0%, rgba(113,206,239,1) 28%, rgba(183,222,237,1) 70%, rgba(183,222,237,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#b7deed', GradientType=0 );
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  -webkit-box-shadow: 3px 3px 21px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 21px 1px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 21px 1px rgba(0,0,0,0.75);
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+  height: 56px;
+  top: 0px;
+  border-top: 1px solid white;
+}
+
+.branding{
+  padding:  15px !important;
+  border-right:  none !important;
+}
+
+#menuContainer > .item {
+  padding: 15px;
+  color: white;
+  cursor: default;
+  display: inline-block;
+}

@@ -25,26 +25,28 @@ export class UserService {
     };
     let usuario3: User = {
       nick: 'Yuliana',
+      subnick: 'Yuli',
       age: 18,
       email: 'yuli@aoe.aoe',
-      status: "away",
+      status: 'away',
       friend: true,
       uid: 3
     };
     let usuario4: User = {
       nick: 'Ricardo',
+      subnick: 'El rica',
       age: 17,
       email: 'rick@aoe.aoe',
       friend: false,
-      status: "busy",
+      status: 'busy',
       uid: 4
     };
     let usuario5: User = {
       nick: 'Marcos',
       age: 30,
-      email:'marcos@aoe.aoe',
+      email: 'marcos@aoe.aoe',
       friend: false,
-      status: "appear_offline",
+      status: 'appear_offline',
       uid: 5
     };
 
