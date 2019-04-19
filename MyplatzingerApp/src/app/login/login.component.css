@@ -1,0 +1,17 @@
+.loginContainer{
+  background-image: url('/assets/img/msnbg.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+a:link, a:visited {
+  color: blue !important;
+  text-decoration: underline;
+  cursor: auto;
+}
+a:hover {
+  cursor:pointer !important;
+}
+a:link:active, a:visited:active {
+  color: violet;
+}

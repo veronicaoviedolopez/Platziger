@@ -12,6 +12,7 @@ export class UserService {
       age: 24,
       email: 'ed@aoe.aoe',
       friend: true,
+      status: "online",
       uid: 1
     };
     let usuario2: User = {
@@ -19,12 +20,14 @@ export class UserService {
       age: 28,
       email: 'fred@aoe.aoe',
       friend: true,
+      status: "offline",
       uid: 2
     };
     let usuario3: User = {
       nick: 'Yuliana',
       age: 18,
       email: 'yuli@aoe.aoe',
+      status: "away",
       friend: true,
       uid: 3
     };
@@ -33,6 +36,7 @@ export class UserService {
       age: 17,
       email: 'rick@aoe.aoe',
       friend: false,
+      status: "busy",
       uid: 4
     };
     let usuario5: User = {
@@ -40,6 +44,7 @@ export class UserService {
       age: 30,
       email:'marcos@aoe.aoe',
       friend: false,
+      status: "appear_offline",
       uid: 5
     };
 

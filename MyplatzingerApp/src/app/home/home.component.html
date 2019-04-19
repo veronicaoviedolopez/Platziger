@@ -4,9 +4,14 @@
 <b>Friends</b>
 <ng-container *ngFor="let user of friends | search: query; let i=index">
   <div>
-      <a routerLink="/conversation/{{user.uid}}">
-          {{i}}.- {{user.nick}} - {{user.email}}
-        </a>
+    <p id="link-user" routerLink="/conversation/{{user.uid}}">
+      <img title="online" id="status_logo" *ngIf="user.status === 'online'" src="assets/img/logo_live_online.png" />
+      <img title="offline" id="status_logo" *ngIf="user.status === 'offline'" src="assets/img/logo_live_offline.png" />
+      <img title="away" id="status_logo" *ngIf="user.status === 'away'" src="assets/img/logo_live_away.png" />
+      <img title="busy" id="status_logo" *ngIf="user.status === 'busy'" src="assets/img/logo_live_busy.png" />
+      <img title="appear_offline" id="status_logo" *ngIf="user.status === 'appear_offline'" src="assets/img/logo_live_appear_offline.png" />
+      {{i}} {{user.nick}} - {{user.email}}
+    </p>
   </div>
 </ng-container>
 
