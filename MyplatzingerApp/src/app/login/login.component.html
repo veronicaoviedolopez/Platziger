@@ -15,13 +15,20 @@
         <p *ngIf="operation=='register'" class="mb-3">Do you have an account?<a class= "alert-link" (click)="operation ='login'"> Sign In </a></p>
         <p class="mb-3">Don't have an account? <a class= "alert-link"(click)="operation = 'register'"> Create account</a></p>
         <div>
-          <input class="form-control mb-3 mt-3" type="email" placeholder="email" />
-          <input class="form-control mb-3 mt-3" type="password" placeholder="password" />
-          <input *ngIf="operation == 'register'" class="form-control mt-1 mb-1" type="text" placeholder="nick" />
+          <input [(ngModel)]="email" class="form-control mb-3 mt-3" type="email" placeholder="email" />
+          <input [(ngModel)]="password" class="form-control mb-3 mt-3" type="password" placeholder="password" />
+          <input [(ngModel)]="nick" *ngIf="operation == 'register'" class="form-control mt-1 mb-1" type="text" placeholder="nick" />
         </div>
         <div  class="text-center">
-          <a *ngIf="operation == 'login'"class="btn btn-success ml-3 mr-3 mt-3">Sign In</a>
-          <a *ngIf="operation == 'register'" class="btn btn-success ml-3 mr-1 mt-3">Register</a>
+          <a (click)="login()"  *ngIf="operation == 'login'"class="btn btn-success ml-3 mr-3 mt-3">Login</a>
+          <a (click)="register()" *ngIf="operation == 'register'" class="btn btn-success ml-3 mr-1 mt-3">Register</a>
+        </div>
+        <div class="row justify-content-md-center">
+          <a (click)="loginWithFacebook()"  *ngIf="operation == 'login'"class="btn btn-primary ml-3 mr-3 mt-3">Login With Facebook </a>
+          <a (click)="loginWithGoogle()"  *ngIf="operation == 'login'" class="btn btn-danger ml-3 mr-3 mt-3">Login with Google </a>
+        </div>
+        <div class="text-right">
+            <a (click)="logout()"  *ngIf="operation == 'login'"class="btn btn-link ml-3 mr-3 mt-3">Logout</a>
         </div>
       </div>
     </div>

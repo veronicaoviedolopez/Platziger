@@ -1,3 +1,51 @@
-<p>
-  {{friend | json}}
-</p>
+<div id="conversationContainer">
+  <div class="container pato45">
+    <div class="d-flex flew-row">
+      <div class="col-md-3 d-flex flex-column">
+        <div class="avatarFrameOnline">
+          <img src="assets/img/generic_avatar.png" class="img-fluid" alt="Avatar">
+        </div>
+        <hr />
+      </div>
+      <div class="col-md-9 d-flex flex-column" *ngIf="friend">
+        <div>
+          <div>
+            <span class="friend-nick">{{ friend.nick }}</span> - <span class="friend-status">({{ friend.status }})</span>
+          </div>
+          <div>
+            <span class="friend-subnick">{{ friend.subnick }}</span>
+          </div>
+          <hr />
+          <div>
+            <div *ngFor="let m of conversation">
+              {{ friend.nick }} dice: <br />
+              <span>{{ m.message }}</span>
+            </div>
+            <div class="d-flex align-items-start flex-column">
+                <img src="assets/img/generic_avatar.png" class="avatarUser img-fluid" alt="Avatar"><span class="speech-bubble">Hola! Como estas?</span>
+            </div>
+            <div class="d-flex align-items-end flex-column">
+                <img src="assets/img/generic_avatar.png" class="avatarUser img-fluid" alt="Avatar"><span class="speech-bubble-me">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris eros, bibendum nec nulla semper, condimentum elementum ligula. Vivamus semper dictum diam, non viverra turpis. Proin rutrum, mi nec mollis ultricies, est lorem finibus tortor, sed dignissim mi est sed neque. Mauris non libero felis. Sed id lectus nisl. Phasellus laoreet, nibh at lobortis vestibulum, sem eros laoreet felis, sit amet consequat purus massa non ligula. Quisque quam quam, vehicula id enim a, fringilla mattis purus. Proin vulputate, risus a malesuada placerat, nulla tellus ultricies orci, vitae volutpat neque felis non urna. Nulla eu consectetur justo, et cursus tortor.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+  <div class="d-flex flew-row">
+      <div class="col-md-3 d-flex flex-column">
+        <div class="avatarFrameOnline">
+          <img src="assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="Avatar">
+        </div>
+      </div>
+      <div class="col-md-9 d-flex flex-column" id="chat-col">
+        <div class="pt-5" >
+          <textarea class="form-control"  rows="5"></textarea>
+        </div>
+        <div class="chat-button d-flex justify-content-end align-items-center">
+            <a class="btn btn-outline-primary">Enviar</a>
+        </div>
+      </div>
+    </div>
+</div>

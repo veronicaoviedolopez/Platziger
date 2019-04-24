@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
+import { Conversation } from '../interfaces/conversation';
 
 @Component({
   selector: 'app-conversation',
@@ -12,6 +13,8 @@ export class ConversationComponent implements OnInit {
   friendId: any;
   friends: User[];
   friend: User;
+  conversation: Conversation[];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private userService: UserService) {
