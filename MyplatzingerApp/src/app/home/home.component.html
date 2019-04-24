@@ -13,7 +13,8 @@
               <div>
                 <span>Online</span>
                 <br/>
-                <span> Escribe un mensaje personal</span>
+                <span> Escribe un mensaje personal</span><br>
+                <a (click)="logout()" >logout</a>
               </div>
             </div>
           </div>
@@ -30,7 +31,7 @@
       </div>
     </div>
     <hr>
-    <b>Friends {{friends.length}} / {{friends.length}}</b>
+    <b *ngIf="friends" >Friends {{friends.length}} / {{friends.length}}</b>
       <div class="d-block mb-1" *ngFor="let user of friends | search: query; let i=index">
           <span id="link-user" routerLink="/conversation/{{user.uid}}">
               <img title="online" id="status_logo" *ngIf="user.status === 'online'" src="assets/img/logo_live_online.png" />
