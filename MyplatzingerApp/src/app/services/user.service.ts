@@ -19,4 +19,7 @@ export class UserService {
   editUser(user) {
     return this.db.object('/users/' + user.uid).set(user);
   }
+  setAvatar(avatar: string, uid: any) {
+    return this.db.object('users/' + uid + '/avatar').set(avatar);
+  }
 }

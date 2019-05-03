@@ -3,17 +3,18 @@
     <div class="homeHeadContainer">
       <div class="row">
         <div class="col-md-auto">
-          <div class="avatarFrameOnline">
-            <img src="assets/img/generic_avatar.png" id="homeAvatarPic">
+          <div *ngIf="user" class="avatarFrameOnline">
+            <img  [src]="user.avatar || 'assets/img/generic_avatar.png'" id="homeAvatarPic">
           </div>
         </div>
-        <div class="col">
+        <div class="col" *ngIf="user" >
             <div >
-              <b>Veronica</b>
+              <b>{{user.nick}}</b>
               <div>
-                <span>Online</span>
+                <span>{{user.status}}</span>
                 <br/>
-                <span> Escribe un mensaje personal</span><br>
+                <i class="text-primary"> {{user.subnick || (user.subnick) }} </i> <br>
+                <span>Escribe un mensaje personal</span><br>
                 <a (click)="logout()" >logout</a>
               </div>
             </div>
@@ -27,7 +28,7 @@
         <input class="form-control" type="text" placeholder="Search Friend" [(ngModel)]="query"  />
       </div>
       <div class="col-md-auto">
-        <img src="assets/img/logo_live_add.png" class="icon">
+        <img  (click)="open(content)" src="assets/img/logo_live_add.png" class="icon">
       </div>
     </div>
     <hr>
@@ -47,3 +48,23 @@
   </div>
 </div>
 
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Send a Request</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+          <label for="emailInvited">email</label>
+          <div class="input-group">
+            <input id="emailInvited" [(ngModel)]="emailInvited" (click.enter)="sendRequest()"  class="form-control" placeholder="email" name="emailInvited">
+        </div>
+     </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="sendRequest()">Save</button>
+    </div>
+  </ng-template>
+  <pre>{{closeResult}}</pre>
