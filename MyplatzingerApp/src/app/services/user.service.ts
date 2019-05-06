@@ -22,4 +22,8 @@ export class UserService {
   setAvatar(avatar: string, uid: any) {
     return this.db.object('users/' + uid + '/avatar').set(avatar);
   }
+  addFriends(userId: string, friendId: string) {
+    this.db.object('/users/' + userId + '/friends/' + friendId).set(friendId);
+    return this.db.object('/users/' + friendId + '/friends/' + userId).set(userId);
+  }
 }

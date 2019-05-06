@@ -10,7 +10,7 @@ export class RequestsService {
   setRequest(r) {
     return this.db.object('requests/' + (r.email.replace('.' , ',')) + '/' + r.sender).set(r);
   }
-  getRequests(email) {
+  getRequestsByEmail(email) {
     return this.db.list('requests/' + email.replace('.' , ','));
   }
   setStatusRequest(r, status){

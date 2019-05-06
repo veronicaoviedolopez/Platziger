@@ -1,0 +1,33 @@
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div clas="modal-header">
+      <h4 class="modal-title">New Friend Request</h4>
+      <a class="closeButton" (click)="close()">x</a>
+    </div>
+    <div class="modal-body" style="height: auto">
+      <div class="row">
+        <div class="col-auto">
+          <img [src]="currentSender.avatar || 'assets/img/generic_avatar.png'" class="img-fluid ">
+        </div>
+        <div class="col-auto">
+          <b>{{currentSender.nick}}</b> <br>
+          <small>send you this friend request</small>
+        </div>
+        <hr/>
+        <div class="col-12">
+          <h4>Do you want to add this person?</h4>
+          <input type="radio" name="addToMsn" class="" [(ngModel)]="shouldAdd" value="yes" id="add-yes">
+          <label for="add-yes" >Yes</label><br>
+          <input type="radio" name="addToMsn" class="" [(ngModel)]="shouldAdd" value="no" id="add-no">
+          <label for="add-no" >No</label><br>
+          <input type="radio" name="addToMsn" class="" [(ngModel)]="shouldAdd" value="decide_later" id="add-later">
+          <label for="add-later" >I decide it later</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="btn btn-primary" (click)="accept()">Ok</a>
+      <a class="btn btn-default" (click)="close()">Cancel</a>
+    </div>
+  </div>
+</div>
