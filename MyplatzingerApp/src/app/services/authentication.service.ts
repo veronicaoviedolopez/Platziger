@@ -11,11 +11,11 @@ export class AuthenticationService {
   loginWithEmail(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
-  loginWithFacebook() {
-    const provider = new firebase.auth.FacebookAuthProvider();
+  loginWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
     return this.afAuth.auth.signInWithPopup(provider);
   }
-  loginWithGoogle() {
+  loginWithFacebook() {
     const provider = new firebase.auth.FacebookAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');

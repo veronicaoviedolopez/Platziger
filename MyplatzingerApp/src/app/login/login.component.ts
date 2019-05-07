@@ -58,8 +58,8 @@ export class LoginComponent implements OnInit {
   loginWithFacebook() {
     this.authenticateService.loginWithFacebook()
     .then(data => {
-      alert('registado correctamente con facebook');
       console.log(data);
+      this.router.navigate(['home']);
     })
     .catch(error => {
       alert('ocurrio un error al registrar con facebook');
@@ -69,8 +69,23 @@ export class LoginComponent implements OnInit {
   loginWithGoogle() {
     this.authenticateService.loginWithGoogle()
     .then(data => {
-      alert('registado correctamente con google');
       console.log(data);
+       /* const user = {
+          uid: data.user.uid,
+          email: this.email,
+          nick: this.nick
+        };
+        this.userService.createUser(user)
+        .then(result => {
+          alert('registado correctamente');
+          console.log(result);
+        })
+        .catch(error2 => {
+          alert('ocurrio un error al registrar');
+          console.log(error2);
+        });
+        this.router.navigate(['home']);
+        */
     })
     .catch(error => {
       alert('ocurrio un error al registrar con google');

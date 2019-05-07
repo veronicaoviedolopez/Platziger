@@ -17,7 +17,7 @@ export interface promptModel {
   styleUrls: ['./request.component.css']
 })
 
-export class RequestComponent extends DialogComponent<promptModel, any> implements promptModel, OnInit {
+export class RequestComponent extends DialogComponent<promptModel, any> implements promptModel {
   scope: any;
   currentRequest: any;
   currentSender: User;
@@ -46,7 +46,4 @@ export class RequestComponent extends DialogComponent<promptModel, any> implemen
       .catch(e => console.log(e));
     }
   }
-ngOnInit() {
-  console.log('currentSender', this.currentSender);
-}
 }

@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
     this.userService.getUsers().valueChanges().subscribe(
       (data: User[]) => {
         this.friends = data;
-        console.log(data);
       },
       error => console.log(error)
     );
@@ -33,7 +32,13 @@ export class HomeComponent implements OnInit {
       data => {
         this.userService.getUserById(data.uid).valueChanges()
         .subscribe(
-          (data2: User) => this.user = data2,
+          (data2: User) => {
+            this.user = data2;
+            if (data2.friends) {
+              this.user.friends = Object.values(this.user.friends);
+              console.log('userByDB', data2);
+            }
+          },
           (er2) => console.log(er2)
         );
       },

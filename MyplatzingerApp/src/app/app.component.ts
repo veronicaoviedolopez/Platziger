@@ -26,11 +26,14 @@ export class AppComponent {
       this.authService.getStatus().subscribe(
         n => this.userService.getUserById(n.uid).valueChanges().subscribe(
           (n2: User) => {
+            if (n2 == null) {
+              return;
+            }
             this.user = n2;
             this.requestService.getRequestsByEmail(n2.email).valueChanges().subscribe(
               (n3: any) => {
                 this.requests = n3;
-                this.requests = this.requests.filter(x => x.status !== 'rejected' && x.status !== 'acepted');
+                this.requests = this.requests.filter(x => x.status !== 'rejected' && x.status !== 'accepted');
                 this.requests.forEach(e => {
                   if (this.mailsShown.indexOf(e.sender) === -1 ) {
                       this.mailsShown.push(e.sender);
