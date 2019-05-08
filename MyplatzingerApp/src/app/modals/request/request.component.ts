@@ -21,7 +21,7 @@ export class RequestComponent extends DialogComponent<promptModel, any> implemen
   scope: any;
   currentRequest: any;
   currentSender: User;
-  shouldAdd: string = 'yes';
+  shouldAdd = 'yes';
    constructor(dialogService: DialogService,
                private requestService: RequestsService,
                private userService: UserService) {

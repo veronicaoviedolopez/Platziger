@@ -51,8 +51,13 @@
       <div class="form-group">
           <label for="emailInvited">email</label>
           <div class="input-group">
-            <input id="emailInvited" [(ngModel)]="emailInvited" (click.enter)="sendRequest()"  class="form-control" placeholder="email" name="emailInvited">
+            <input type="email"  id="emailInvited" [(ngModel)]="emailInvited" (click.enter)="sendRequest()"  class="form-control" placeholder="email" name="emailInvited">
         </div>
+        <br>
+        <label for="message">message</label>
+        <div class="input-group">
+          <textarea rows=3 id="message" [(ngModel)]="message" class="form-control" placeholder="message" name="message" ></textarea>
+      </div>
      </div>
     </div>
     <div class="modal-footer">

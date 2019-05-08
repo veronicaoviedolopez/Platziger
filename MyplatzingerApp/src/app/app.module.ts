@@ -18,7 +18,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import {ImageCropperModule} from 'ngx-image-cropper';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { RequestsComponent } from './requests/requests.component';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { RequestComponent } from './modals/request/request.component';
 import { ContactComponent } from './contact/contact.component';
@@ -32,7 +31,6 @@ import { ContactComponent } from './contact/contact.component';
     ProfileComponent,
     MenuComponent,
     SearchPipe,
-    RequestsComponent,
     RequestComponent,
     ContactComponent
   ],

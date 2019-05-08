@@ -15,8 +15,9 @@ export class HomeComponent implements OnInit {
   friends: User[];
   query: string = '';
   user: User;
-  emailInvited: string = "";
+  emailInvited: string = '';
   closeResult: string;
+  message: string = '';
   constructor(private userService: UserService,
               private authService: AuthenticationService,
               private router: Router,
@@ -59,7 +60,8 @@ export class HomeComponent implements OnInit {
       timestamp: Date.now(),
       email: this.emailInvited,
       sender: this.user.uid,
-      status: 'pending'
+      status: 'pending',
+      message: this.message
     };
     this.requestService.setRequest(request)
     .then(r => console.log('solicitud enviada!'))
