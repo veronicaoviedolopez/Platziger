@@ -16,6 +16,7 @@
   -moz-box-shadow: 3px 3px 21px 1px rgba(0,0,0,0.75);
   box-shadow: 3px 3px 21px 1px rgba(0,0,0,0.75);
   position: fixed;
+  width: 100%;
   z-index: 9;
   height: 56px;
   top: 0px;
