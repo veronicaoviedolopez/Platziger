@@ -16,11 +16,11 @@
   -moz-box-shadow: 3px 3px 21px 1px rgba(0,0,0,0.75);
   box-shadow: 3px 3px 21px 1px rgba(0,0,0,0.75);
   position: fixed;
-  width: 100%;
   z-index: 9;
   height: 56px;
   top: 0px;
   border-top: 1px solid white;
+  align-items:center;
   display: flex;
 }
 
@@ -28,17 +28,17 @@
   padding:  15px !important;
   border-right:  none !important;
 }
-#menuContainer > .item {
+.item {
   padding: 15px;
   color: white;
   cursor: default;
   display: inline-block;
 }
-
-#menuContainer > .itemRight {
-  color: white;
-  cursor: default;
-  display: inline-block;
-  padding: 15px;
-  justify-content:flex-end;
+.LEFT{
+  display: flex;
+  justify-content: flex-start;
+}
+.RIGTH{
+  display: flex;
+  justify-content: flex-end;
 }
