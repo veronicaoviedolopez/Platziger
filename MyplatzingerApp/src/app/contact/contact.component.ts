@@ -13,7 +13,6 @@ export class ContactComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    console.log(this.uid);
     this.userService.getUserById(this.uid).valueChanges().subscribe(
       (data: User) =>  this.contact = data ,
       error => console.log(error)

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,21 +16,15 @@ export class LoginComponent implements OnInit {
 
   constructor(private authenticateService: AuthenticationService,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
   }
   ngOnInit() {
   }
   login() {
     this.authenticateService.loginWithEmail(this.email, this.password)
-    .then(data => {
-      alert('logeado correctamente');
-      console.log(data);
-      this.router.navigate(['home']);
-    })
-    .catch(error => {
-      alert('ocurrio un error al logear');
-      console.log(error);
-    });
+    .then(() => this.router.navigate(['home']))
+    .catch(error => console.log(error));
   }
   register() {
     this.authenticateService.registerWithEmail(this.email, this.password)
@@ -41,66 +35,33 @@ export class LoginComponent implements OnInit {
         nick: this.nick
       };
       this.userService.createUser(user)
-      .then(result => {
-        alert('registado correctamente');
-        console.log(result);
-      })
-      .catch(error2 => {
-        alert('ocurrio un error al registrar');
-        console.log(error2);
-      });
+      .then(() => this.login())
+      .catch(error2 => console.log(error2));
     })
-    .catch(error => {
-      alert('ocurrio un error al registrar');
-      console.log(error);
-    });
+    .catch(error => console.log(error));
   }
-  loginWithFacebook() {
-    this.authenticateService.loginWithFacebook()
+  loginWithSocialNetworks(provider: string) {
+    this.authenticateService.loginWithSocialNetworks(provider)
     .then(data => {
-      console.log(data);
-      this.router.navigate(['home']);
-    })
-    .catch(error => {
-      alert('ocurrio un error al registrar con facebook');
-      console.log(error);
-    });
-  }
-  loginWithGoogle() {
-    this.authenticateService.loginWithGoogle()
-    .then(data => {
-      console.log(data);
-       /* const user = {
+      if (data.additionalUserInfo.isNewUser) {
+        const user = {
           uid: data.user.uid,
-          email: this.email,
-          nick: this.nick
+          email: data.user.email,
+          nick: data.user.displayName,
+          avatar: data.user.photoURL
         };
         this.userService.createUser(user)
-        .then(result => {
-          alert('registado correctamente');
-          console.log(result);
+        .then(() => {
+          this.router.navigate(['home']);
         })
         .catch(error2 => {
-          alert('ocurrio un error al registrar');
+          alert(`ocurrio un error al registrar con ${provider}`);
           console.log(error2);
         });
+      } else {
         this.router.navigate(['home']);
-        */
+      }
     })
-    .catch(error => {
-      alert('ocurrio un error al registrar con google');
-      console.log(error);
-    });
-  }
-  logout() {
-    this.authenticateService.logout()
-    .then(data => {
-      alert('deslogeado correctamente');
-      console.log(data);
-    })
-    .catch(error => {
-      alert('ocurrio un error al deslogear');
-      console.log(error);
-    });
+    .catch(error => console.log(error));
   }
 }

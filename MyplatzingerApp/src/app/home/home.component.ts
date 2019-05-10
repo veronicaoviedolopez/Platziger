@@ -31,6 +31,9 @@ export class HomeComponent implements OnInit {
     );
     this.authService.getStatus().subscribe(
       data => {
+        if (data === null) {
+          return;
+        }
         this.userService.getUserById(data.uid).valueChanges()
         .subscribe(
           (data2: User) => {
@@ -49,10 +52,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
   logout() {
-    this.authService.logout().then(r => {
-      alert('session cerrada');
-      this.router.navigate(['login']);
-    })
+    this.authService.logout().then(() => this.router.navigate(['login']))
     .catch(e => console.log('eror: ', e));
   }
   sendRequest() {
@@ -64,10 +64,10 @@ export class HomeComponent implements OnInit {
       message: this.message
     };
     this.requestService.setRequest(request)
-    .then(r => console.log('solicitud enviada!'))
-    .catch(e => console.log('error al envair solcitud', e));
+    .then(() => this.modalService.dismissAll('success') )
+    .catch(e => console.log('error al enviar solcitud', e));
   }
-  open(content) {
+  open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result
     .then(result =>  console.log(`Dismissed ${result}`),
      reason => console.log(`Dismissed ${reason}`)

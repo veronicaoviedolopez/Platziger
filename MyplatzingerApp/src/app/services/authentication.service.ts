@@ -11,14 +11,13 @@ export class AuthenticationService {
   loginWithEmail(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
-  loginWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    return this.afAuth.auth.signInWithPopup(provider);
-  }
-  loginWithFacebook() {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
+  loginWithSocialNetworks(prov: string) {
+    let provider: any;
+    if (prov === 'facebook') {
+      provider = new firebase.auth.FacebookAuthProvider();
+    } else if (prov === 'google') {
+      provider = new firebase.auth.GoogleAuthProvider();
+    }
     return this.afAuth.auth.signInWithPopup(provider);
   }
   registerWithEmail(email: string, password: string) {
