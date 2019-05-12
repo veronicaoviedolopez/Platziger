@@ -1,0 +1,74 @@
+<div id="conversationContainer" [ngClass]="{shaker: shake}" >
+  <div class="container pato45">
+    <div class="d-flex flew-row">
+      <div class="col-md-3 d-flex flex-column">
+        <div class="avatarFrameOnline" *ngIf="friend">
+          <img [src]="friend.avatar || 'assets/img/generic_avatar.png'" class="img-fluid" alt="Avatar">
+        </div>
+        <hr />
+      </div>
+      <div class="col-md-9 d-flex flex-column" *ngIf="friend">
+        <div>
+          <div>
+            <span class="friend-nick">{{ friend.nick }}</span> - <span class="friend-status">({{ friend.status }})</span>
+          </div>
+          <div>
+            <span class="friend-subnick">{{ friend.subnick }}</span>
+          </div>
+          <hr />
+          <div *ngFor="let m of conversations">
+            <div class="d-flex flex-column"  [ngClass]="{'align-items-end': m.sender === friend.uid,'align-items-start': m.sender === user.uid}">
+              <div class="img-fluid">
+                  <img [src] = "getAvatarById(m.sender) || 'assets/img/generic_avatar.png'"  alt="Avatar" class="avatarUser img-fluid">
+                  <span  class="friend-status">{{getNickById(m.sender)}}</span>
+              </div>
+              <span  class="mb-1"  [ngClass]="{'speech-bubble': m.sender === friend.uid, 'speech-bubble-me': m.sender === user.uid}">
+                  {{m.text}}
+              </span>
+              <img  class="mb-1" *ngIf="m.image" src={{m.image}}>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+  <div class="d-flex flew-row">
+      <div class="col-md-3 d-flex flex-column">
+        <div *ngIf="user" class="avatarFrameOnline">
+          <img [src]="user.avatar || 'assets/img/generic_avatar.png'" class="avatarImage img-fluid" alt="Avatar">
+        </div>
+      </div>
+      <div class="col-md-9 d-flex flex-column" id="chat-col">
+        <div class="pt-5" >
+          <textarea [(ngModel)]="textMessage" (keyup.enter)="sendMessage()"  class="form-control"  rows="5"></textarea>
+        </div>
+        <div  id="divEmoticonos">
+          <img class="img-fluid sizeIcon" src="assets/img/zumbido.png" (click)="sendZumbido()"  title="send zumbido">
+          <img class="img-fluid sizeIcon" src="assets/img/image.png"   (click)="sendImage()"  title="send image" >
+        </div>
+        <div>
+            <label class="custom-file-upload">
+                <input type="file" (change)="fileChangeEvent($event)" />
+                Send Image
+            </label>
+        </div>
+        <div>
+            <image-cropper
+            [imageChangedEvent]= "imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="1 / 1"
+            [resizeToWidth]="128"
+            format="png"
+            (imageCropped)= "imageCropped($event)"
+            (imageLoaded)= "imageLoaded()"
+            (cropperReady)= "cropperReady()"
+            (loadImageFailed)= "loadImageFailed()"
+          ></image-cropper>
+        </div>
+        <div class="chat-button d-flex justify-content-end align-items-center">
+          <a class="btn btn-outline-primary" (click)="sendImage()">Enviar</a>
+        </div>
+      </div>
+    </div>
+</div>

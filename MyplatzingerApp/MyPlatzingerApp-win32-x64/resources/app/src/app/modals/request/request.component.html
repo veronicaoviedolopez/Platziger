@@ -1,0 +1,58 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div clas="modal-header">
+        <h4 class="modal-title pl-3">New Friend Request
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </h4>
+      </div>
+      <div class="modal-body" style="height: auto">
+        <div class="row">
+          <div class="col-auto">
+            <img [src]="currentSender.avatar || 'assets/img/generic_avatar.png'" class="img-fluid ">
+          </div>
+          <div class="col-auto">
+            <div class="row">
+                  <div class="col-auto">
+                      <h4><b>
+                        {{currentSender.nick}}
+                      </b>
+                      <br> <small> {{currentRequest.message}}</small></h4>
+
+                </div>
+            </div>
+            <br>
+            <div *ngIf="currentRequest.message" class="row">
+                <div class="col-auto tm-3 ">
+                    <small>send you this friend request</small><br>
+               </div>
+            </div>
+            <div *ngIf="currentRequest.message" class="row">
+              <div class="col-12">
+                <b>
+
+                </b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-12">
+              <h5>Do you want to add this person?</h5>
+              <input type="radio" name="addToMsn" class="" [(ngModel)]="shouldAdd" value="yes" id="add-yes">
+              <label for="add-yes" >Yes</label><br>
+              <input type="radio" name="addToMsn" class="" [(ngModel)]="shouldAdd" value="no" id="add-no">
+              <label for="add-no" >No</label><br>
+              <input type="radio" name="addToMsn" class="" [(ngModel)]="shouldAdd" value="decide_later" id="add-later">
+              <label for="add-later" >I decide it later</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary" (click)="accept()">Ok</a>
+        <a class="btn btn-default" (click)="close()">Cancel</a>
+      </div>
+    </div>
+

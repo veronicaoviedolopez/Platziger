@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
         .subscribe(
           (data2: User) => {
             this.user = data2;
+            console.log('user', data);
             if (data2.friends) {
               this.user.friends = Object.values(this.user.friends);
               console.log('userByDB', data2);

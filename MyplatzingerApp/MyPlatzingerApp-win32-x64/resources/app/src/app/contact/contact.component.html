@@ -1,0 +1,12 @@
+<div *ngIf="contact" >
+  <span id="link-user" routerLink="/conversation/{{contact.uid}}">
+    <img title="online" id="status_logo" *ngIf="contact.status === 'online'" src="assets/img/logo_live_online.png" />
+    <img title="offline" id="status_logo" *ngIf="contact.status === 'offline'" src="assets/img/logo_live_offline.png" />
+    <img title="away" id="status_logo" *ngIf="contact.status === 'away'" src="assets/img/logo_live_away.png" />
+    <img title="busy" id="status_logo" *ngIf="contact.status === 'busy'" src="assets/img/logo_live_busy.png" />
+    <img title="appear_offline" id="status_logo" *ngIf="contact.status === 'appear_offline'" src="assets/img/logo_live_appear_offline.png" />
+    <b>{{contact.nick}} </b>
+    <i class="text-primary"> {{contact.subnick || (contact.subnick) }} </i>
+    <small>{{contact.email}}</small>
+  </span>
+</div>

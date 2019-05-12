@@ -36,6 +36,7 @@ export class AppComponent {
               this.requests.forEach(e => {
                 if (this.mailsShown.indexOf(e.sender) === -1) {
                   this.mailsShown.push(e.sender);
+                  console.log(e);
                   this.userService.getUserById(e.sender).valueChanges().subscribe(
                     (n4: User) => this.dialogService.addDialog(RequestComponent, { scope: this, currentRequest: e, currentSender: n4 })
                   );
