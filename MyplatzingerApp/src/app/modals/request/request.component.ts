@@ -45,5 +45,6 @@ export class RequestComponent extends DialogComponent<promptModel, any> implemen
       .then(r2 => console.log(r2))
       .catch(e => console.log(e));
     }
+    this.dialogService.removeDialog(this);
   }
 }
